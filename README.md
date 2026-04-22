@@ -27,8 +27,8 @@ Near-perfect results on 20 diverse test examples (high confidence scores)
 
 ### Installation
 ```bash
-git clone https://github.com/moreheaj/roberta-imdb-sentiment.git
-cd roberta-imdb-sentiment
+git clone https://github.com/moreheaj/roberta-sentiment-analysis.git
+cd roberta-sentiment-analysis
 pip install -r requirements.txt
 ```
 
