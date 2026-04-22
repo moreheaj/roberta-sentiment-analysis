@@ -222,32 +222,15 @@ trainer.save_model("./fine_tuned_roberta_imdb")
 tokenizer.save_pretrained("./fine_tuned_roberta_imdb")
 
 ########################################################################################
-# 12. Fixed Inference (model moved to CPU)
+# 12. Start the trainer
 ########################################################################################
-# Test inference with quick samples
 ########################################################################################
 
 model = trainer.model.cpu()
 
-def predict_sentiment(text):
-    inputs = tokenizer(text, truncation=True, padding=True, return_tensors="pt")
-    inputs = {k: v.to(model.device) for k, v in inputs.items()}
-    
-    with torch.no_grad():
-        outputs = model(**inputs)
-    
-    prediction = torch.argmax(outputs.logits, dim=-1).item()
-    return "Positive" if prediction == 1 else "Negative"
-
-
-
-print("\nTest Predictions:")
-print("Positive example:", predict_sentiment("This movie was absolutely fantastic and I loved every minute!"))
-print("Negative example:", predict_sentiment("This was the worst film I have ever seen. Total waste of time."))
-
 
 ########################################################################################
-# 12. Extended Test Inferences (~20 examples)
+# 13. Extended Test Inferences (~20 examples)
 ########################################################################################
 print("\n=== Extended Test Inferences (20 examples) ===")
 
